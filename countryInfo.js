@@ -2,8 +2,16 @@ var countries;
 var countriesGistAPI =
   "https://api.github.com/gists/0b97ccf117252d742dddf098bc6cc58a";
 
+
+// Get the JSON data  
+async function getJSON() {
+  let response = await fetch(countriesGistAPI);
+  let data = await response.json();
+  return JSON.parse(data.files["countries.json"].content);
+}
+
 // Get the country object by name or capital
-function getCountry(name) {
+function searchForCountry(name) {
   name = name.toLowerCase();
   var country = countries.countries.country;
   return country.filter(
@@ -13,23 +21,12 @@ function getCountry(name) {
   );
 }
 
-async function getJSON() {
-  let response = await fetch(countriesGistAPI);
-  let data = await response.json();
-  return JSON.parse(data.files["countries.json"].content);
-}
-
-async function main() {
+async function getCountry() {
   // Get the JSON data
   countries = await getJSON();
-
   // Get the country object
-  var country = getCountry("Amman");
-  if (country) {
-    console.log(country);
-  } else {
-    console.log("Country not found");
-  }
+  var country = searchForCountry("Amman");
+  console.log(country ?? "Country not found");
 }
 
-main().then(() => console.log("Done"));
+export const getCountryInfo = getCountry;
