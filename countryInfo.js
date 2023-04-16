@@ -1,14 +1,6 @@
-var countries;
-var countriesGistAPI =
-  "https://api.github.com/gists/0b97ccf117252d742dddf098bc6cc58a";
+import { getCountries } from "./api.js";
 
-
-// Get the JSON data  
-async function getJSON() {
-  let response = await fetch(countriesGistAPI);
-  let data = await response.json();
-  return JSON.parse(data.files["countries.json"].content);
-}
+let countries = await getCountries();
 
 // Get the country object by name or capital
 function searchForCountry(name) {
@@ -21,11 +13,9 @@ function searchForCountry(name) {
   );
 }
 
-async function getCountry() {
-  // Get the JSON data
-  countries = await getJSON();
+async function getCountry(name) {
   // Get the country object
-  var country = searchForCountry("Amman");
+  let country = searchForCountry(name);
   console.log(country ?? "Country not found");
 }
 
