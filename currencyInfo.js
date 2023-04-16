@@ -1,8 +1,9 @@
-var currencies;
-var currenciesGistAPI = "https://api.github.com/gists/2973986";
+import { getCurrencies } from "./api.js";
+
+let currencies = await getCurrencies();
 
 // Get the currency object by name or code
-function getCurrency(currency) {
+function searchForCurrency(currency) {
   // The currency code is always in uppercase
   var code = currency.toUpperCase();
   if (currencies[code]) {
@@ -15,23 +16,11 @@ function getCurrency(currency) {
   );
 }
 
-async function getJSON() {
-  let response = await fetch(currenciesGistAPI);
-  let data = await response.json();
-  return JSON.parse(data.files["Common-Currency.json"].content);
-}
-
-async function main() {
-  // Get the JSON data
-  currencies = await getJSON();
-
+async function getCurrency(name) {
   // Get the currency object
-  var currency = getCurrency("JOD");
-  if (currency) {
-    console.log(currency);
-  } else {
-    console.log("Currency not found");
-  }
+  var currency = searchForCurrency(name);
+  console.log(currency ?? "Currency not found");
 }
 
-main().then(() => console.log("Done"));
+
+export const getCurrencyInfo = getCurrency;
