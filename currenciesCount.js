@@ -1,35 +1,32 @@
-import { getCountries } from "./api.js";
+import { getCountriesJSON } from "./api.js";
 
-let countries = await getCountries();
-let country = countries.countries.country;
+let countriesJson = await getCountriesJSON();
+let countries = countriesJson.countries.country;
 
 // function to get all currencies from countries.json without duplicates (returns array) [1]
 
-function getCurrenciesSet(country) {
-  return [...new Set(country.map((country) => country.currencyCode))];
-}
+let getCurrenciesSet = (countries) => {
+  return [...new Set(countries.map((countries) => countries.currencyCode))];
+};
 
 // function to get all currencies from countries.json without duplicates (returns object) [2]
 
-function getCurrenciesMap(country) {
-  return country
-    .map((country) => country.currencyCode)
-    .filter((currency, index, array) => array.indexOf(currency) === index);
-}
+let getCurrenciesMap = (countries) => {
+  //filter out the duplicates and return map of currencies
+  return countries
+    .filter(
+      (value, index, self) =>
+        self.findIndex((t) => t.currencyCode === value.currencyCode) === index
+    )
+    .map((countries) => countries.currencyCode);
+};
 
-async function getCurrenciesCountFirst() {
-  let currencies = getCurrenciesSet(country);
-  let currenciesCount = currencies.length;
-  console.log(currenciesCount);
-  console.log(currencies);
-}
+export let getCurrenciesWithoutDuplicatesUsingSet = () => {
+  let currencies = getCurrenciesSet(countries);
+  return currencies;
+};
 
-async function getCurrenciesCountSecond() {
-  let currencies = getCurrenciesMap(country);
-  let currenciesCount = currencies.length;
-  console.log(currenciesCount);
-  console.log(currencies);
-}
-
-export const getCurrenciesCountUsingSet = getCurrenciesCountFirst;
-export const getCurrenciesCountUsingMap = getCurrenciesCountSecond;
+export let getCurrenciesWithoutDuplicateUsingMap = () => {
+  let currencies = getCurrenciesMap(countries);
+  return currencies;
+};
