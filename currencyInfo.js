@@ -1,9 +1,10 @@
-import { getCurrencies } from "./api.js";
+import { getCurrenciesJSON } from "./api.js";
+import { CURRENCY_NOT_FOUND } from "./constants.js";
 
-let currencies = await getCurrencies();
+let currencies = await getCurrenciesJSON();
 
 // Get the currency object by name or code
-function searchForCurrency(currency) {
+let searchForCurrency = (currency) => {
   // The currency code is always in uppercase
   var code = currency.toUpperCase();
   if (currencies[code]) {
@@ -13,14 +14,7 @@ function searchForCurrency(currency) {
   let currencyName = Object.values(currencies);
   return currencyName.filter(
     (currencyName) => currencyName.name.toLowerCase() === currency
-  );
-}
+  )[0];
+};
 
-async function getCurrency(name) {
-  // Get the currency object
-  var currency = searchForCurrency(name);
-  console.log(currency ?? "Currency not found");
-}
-
-
-export const getCurrencyInfo = getCurrency;
+export let getCurrency = (name) => (searchForCurrency(name) ?? CURRENCY_NOT_FOUND);
