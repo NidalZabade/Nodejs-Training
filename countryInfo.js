@@ -1,22 +1,17 @@
-import { getCountries } from "./api.js";
+import { getCountriesJSON } from "./api.js";
+import { COUNTRY_NOT_FOUND } from "./constants.js";
 
-let countries = await getCountries();
+let countriesJson = await getCountriesJSON();
 
 // Get the country object by name or capital
-function searchForCountry(name) {
+let searchForCountry = (name) => {
   name = name.toLowerCase();
-  var country = countries.countries.country;
-  return country.filter(
-    (country) =>
-      country.countryName.toLowerCase() === name ||
-      country.capital.toLowerCase() === name
-  );
-}
+  var countries = countriesJson.countries.country;
+  return countries.filter(
+    (countries) =>
+      countries.countryName.toLowerCase() === name ||
+      countries.capital.toLowerCase() === name
+  )[0];
+};
 
-async function getCountry(name) {
-  // Get the country object
-  let country = searchForCountry(name);
-  console.log(country ?? "Country not found");
-}
-
-export const getCountryInfo = getCountry;
+export let getCountry = (name) => searchForCountry(name) ?? COUNTRY_NOT_FOUND;
