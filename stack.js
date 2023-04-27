@@ -8,12 +8,12 @@ export class Stack {
   }
   // Remove the last element from the stack and return it if exists
   pop() {
-    if (this.items.length == 0) return "Underflow";
+    if (this.items.length == 0) return "There is no element in the stack";
     return this.items.pop();
   }
   // Remove the first element from the stack and return it if exists
   trim() {
-    if (this.items.length == 0) return "Underflow";
+    if (this.items.length == 0) return "There is no element in the stack";
     return this.items.shift();
   }
   // Checks if the stack is empty
