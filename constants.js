@@ -5,3 +5,4 @@ export let COUNTRIES_URL =
 export let COUNTRY_NOT_FOUND = "Country not found";
 export let CURRENCY_NOT_FOUND = "Currency not found";
 export let LINE= "----------------------------------------";
+export let WEEK_DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
