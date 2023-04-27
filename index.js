@@ -3,7 +3,7 @@ import {
   searchForCountryUsingWhileLoop,
   searchForCountryUsingForLoop,
   searchForCountryUsingForOfLoop,
-  searchForCountryUsingForInLoop
+  searchForCountryUsingForInLoop,
 } from "./countryInfo.js";
 import { getCurrency } from "./currencyInfo.js";
 import {
@@ -12,7 +12,7 @@ import {
 } from "./currenciesCount.js";
 import { LINE } from "./constants.js";
 import { Stack } from "./stack.js";
-
+import { CustomDate } from "./customDate.js";
 
 // test CurrencyInfo, CountryInfo and CurrenciesCount modules
 console.log(LINE);
@@ -31,7 +31,6 @@ console.log(LINE);
 console.log(getCurrenciesWithoutDuplicateUsingMap());
 console.log(LINE);
 console.log(getCurrenciesWithoutDuplicatesUsingSet());
-
 
 // test Stack class
 const stack = new Stack();
@@ -60,3 +59,25 @@ console.log(stack.bottom(2));
 console.log(stack.remove(2));
 console.log(stack.items);
 console.log(stack.clear());
+
+// test CustomDate class
+const customDate = new CustomDate();
+console.log(customDate.current());
+customDate.updateDate(new Date("2023-04-30"));
+console.log(customDate.yesterday());
+console.log(customDate.yesterdayDay());
+console.log(customDate.tomorrow());
+console.log(customDate.tomorrowDay());
+console.log(customDate.addMinutes(30));
+console.log(customDate.addHours(2));
+console.log(customDate.addDays(2));
+console.log(customDate.isFuture());
+console.log(customDate.compare(new Date("2023-04-30")));
+console.log(customDate.compare(new Date("2021-04-21")));
+console.log(customDate.compare(new Date("2023-05-23")));
+console.log(customDate.differenceInDays(new Date("2023-04-27")));
+console.log(customDate.differenceInDays(new Date("2023-05-30")));
+console.log(customDate.convertMinutesToTextualHour(200));
+console.log(customDate.getQuarter());
+console.log(customDate.shortDay());
+console.log(customDate.shortDay(new Date("2023-04-15")));
