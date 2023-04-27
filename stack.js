@@ -1,4 +1,4 @@
-class Stack {
+export class Stack {
   constructor() {
     this.items = [];
   }
@@ -30,11 +30,11 @@ class Stack {
   }
   // Returns a space-separated string that contains all stack elements;
   displayStack(stack) {
-    return stack.join(" ");
+    return stack.items.join(" ");
   }
   // Return a new stack in reverse order
   reverse_stack(stack) {
-    return stack.reverse();
+    return stack.items.reverse();
   }
   // Return the max element in the stack (return -1 if it does not exists)
   max() {
@@ -53,7 +53,7 @@ class Stack {
     return this.items.indexOf(element);
   }
   // Return a non-duplicated stack
-  set(element) {
+  set() {
     return [...new Set(this.items)];
   }
   // Return the n-th element from the top
