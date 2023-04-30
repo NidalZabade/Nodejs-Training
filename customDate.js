@@ -60,16 +60,17 @@ export class CustomDate {
 
   // Return (bigger, smaller or equal) between the given date and this.date
   compare(newDate) {
-    return this.date > newDate
-      ? "bigger"
-      : this.date < newDate
-      ? "smaller"
-      : "equal";
+    if (this.date > newDate) {
+      return "bigger";
+    } else if (this.date < newDate) {
+      return "smaller";
+    }
+    return "equal";
   }
 
   // Return the difference between the given date and this.date in format (x Days, y hours, z minutes)
   differenceInDays(newDate) {
-    return `${Math.floor((newDate - this.date) / (1000 * 60 * 60 * 24))} Days`;
+    return `${Math.floor((new Date(newDate) - this.date) / (1000 * 60 * 60 * 24))} Days`;
   }
 
   // Returns minutes in hours format, eg: convertMinutesToTextualHour(200) = 3 hour(s) and 20 minute(s)
@@ -79,16 +80,18 @@ export class CustomDate {
 
   // Returns the quarter (1 to 4) of the year for the given date, else use this.date
   getQuarter(newDate, date = this.date) {
-    return newDate
-      ? Math.floor((new Date(newDate).getMonth() + 3) / 3)
-      : Math.floor((date.getMonth() + 3) / 3);
+    if (newDate) {
+      return Math.floor((new Date(newDate).getMonth() + 3) / 3);
+    }
+    return Math.floor((date.getMonth() + 3) / 3);
   }
 
   // Returns current day (three letters, Mon through Sun) for the given date, else use this.date
   shortDay(newDate, date = this.date) {
-    return newDate
-      ? WEEK_DAYS[new Date(newDate).getDay()].slice(0, 3)
-      : WEEK_DAYS[date.getDay()].slice(0, 3);
+    if (newDate) {
+      return WEEK_DAYS[new Date(newDate).getDay()].slice(0, 3);
+    }
+    return WEEK_DAYS[date.getDay()].slice(0, 3);
   }
 }
 
