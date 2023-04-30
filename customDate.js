@@ -7,33 +7,28 @@ export class CustomDate {
 
   // update this.date object
   updateDate(newDate) {
-    this.date = newDate;
+    this.date = new Date(newDate);
   }
 
   // return yesterday's date
   yesterday() {
-    let yesterday = new Date(this.date);
-    yesterday.setDate(yesterday.getDate() - 1);
-    return yesterday.toLocaleDateString();
+    console.log(this.date);
+    return new Date(new Date(this.date).setDate(this.date.getDate() - 1));
   }
 
   // return yesterday's day
   yesterdayDay() {
-    return this.date.getDay() - 1 >= 0
-      ? WEEK_DAYS[this.date.getDay() - 1]
-      : WEEK_DAYS[6];
+    return WEEK_DAYS[new Date(new Date(this.date).setDate(this.date.getDate() - 1)).getDay()];
   }
 
   // return tomorrow's date
   tomorrow() {
-    let tomorrow = new Date(this.date);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow.toLocaleDateString();
+    return new Date(new Date(this.date).setDate(this.date.getDate() + 1));
   }
 
   // return tomorrow's day
   tomorrowDay() {
-    return WEEK_DAYS[this.date.getDay() + (1 % 7)];
+    return WEEK_DAYS[new Date(new Date(this.date).setDate(this.date.getDate() + 1)).getDay()];
   }
 
   // add minutes to this.date
@@ -97,4 +92,5 @@ export class CustomDate {
       : WEEK_DAYS[date.getDay()].slice(0, 3);
   }
 }
+
 
