@@ -12,7 +12,6 @@ export class CustomDate {
 
   // return yesterday's date
   yesterday() {
-    console.log(this.date);
     return new Date(new Date(this.date).setDate(this.date.getDate() - 1));
   }
 
@@ -92,5 +91,6 @@ export class CustomDate {
       : WEEK_DAYS[date.getDay()].slice(0, 3);
   }
 }
+
 
 
