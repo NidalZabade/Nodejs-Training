@@ -11,5 +11,8 @@
     "count": "node currenciesCount.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
 }
