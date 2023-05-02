@@ -14,7 +14,7 @@ import { LINE } from "./constants.js";
 import { Stack } from "./stack.js";
 import { CustomDate } from "./customDate.js";
 
-// // test CurrencyInfo, CountryInfo and CurrenciesCount modules
+//! est CurrencyInfo, CountryInfo and CurrenciesCount modules
 // console.log(LINE);
 // console.log(getCountry("India"));
 // console.log(LINE);
@@ -32,7 +32,7 @@ import { CustomDate } from "./customDate.js";
 // console.log(LINE);
 // console.log(getCurrenciesWithoutDuplicatesUsingSet());
 
-// // test Stack class
+//! test Stack class
 // const stack = new Stack();
 // console.log(stack.isEmpty());
 // console.log(stack.displayStack(stack));
@@ -60,18 +60,18 @@ import { CustomDate } from "./customDate.js";
 // console.log(stack.items);
 // console.log(stack.clear());
 
-// test CustomDate class
-const customDate = new CustomDate();
-console.log(customDate.current());
+//! test CustomDate class
+// const customDate = new CustomDate();
+// console.log(customDate.current());
 // console.log(customDate.updateDate("2021-03-15"));
 // console.log(customDate.current());
 // console.log(customDate.addMinutes(10));
 // console.log(customDate.addHours(1));
 // console.log(customDate.addDays(1));
-console.log(customDate.yesterday());
-console.log(customDate.yesterdayDay());
-console.log(customDate.tomorrow());
-console.log(customDate.tomorrowDay());
+// console.log(customDate.yesterday());
+// console.log(customDate.yesterdayDay());
+// console.log(customDate.tomorrow());
+// console.log(customDate.tomorrowDay());
 // console.log(customDate.isFuture());
 // console.log(customDate.getQuarter());
 // console.log(customDate.differenceInDays("2021-08-01"));
